@@ -95,3 +95,10 @@ files.download("grafico.html")
   <li>⭐ <a href="https://github.com/plotly/" target="_blank">Repositorio de Plotly en GitHub</a></li>
   <li>📗 <a href="https://colab.research.google.com/drive/1xYy-example-example-id" target="_blank">Ejemplo práctico en Google Colab</a> 🚀</li>
 </ul>
+
+<h2>👨‍💻 Integrantes</h2>
+<ul>
+  <li>👓 Andrés Nicolás Rodríguez Bustos 🧠</li>
+  <li>👓 Adrian Camilo Gonzalez Riveros 🧠</li>
+  <li>👓 Giankarlo Rojas Delgado 🧠</li>
+</ul>
