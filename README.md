@@ -1,4 +1,4 @@
-<h1 style="text-align:center;">🐍✨ Guía para Principiantes: Plotly en Google Colab 🚀✨</h1>
+<h1 style="text-align:center;">🐍✨ Plotly en Google Colab 🚀✨</h1>
 
 <p style="text-align:center;">Aprende a usar Plotly en Google Colab para crear gráficos interactivos directamente desde tu navegador. 🌟</p>
 
