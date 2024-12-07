@@ -1,79 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uso de Plotly en Google Colab</title>
-</head>
-<body>
-    <h1>Uso de Plotly en Google Colab</h1>
-    <p>Esta guía explica cómo instalar y utilizar <strong>Plotly</strong> en <strong>Google Colab</strong> para crear gráficos interactivos desde cero.</p>
+<h1>Guía para Principiantes: Plotly</h1>
 
-    <h2>¿Qué es Plotly?</h2>
-    <p>Plotly es una biblioteca de Python que permite crear gráficos interactivos y visualizaciones de datos atractivas, ideales para análisis exploratorio o presentación de resultados.</p>
+<p>Plotly es una biblioteca de Python para crear gráficos interactivos de alta calidad, útil para análisis de datos y visualización. Esta guía te ayudará a comenzar con los conceptos básicos.</p>
 
-    <hr>
+<h2>Instalación</h2>
+<pre>
+<code>
+pip install plotly    # Instala la biblioteca Plotly
+</code>
+</pre>
 
-    <h2>Guía paso a paso</h2>
+<h2>Primeros Pasos</h2>
+<p>Importa la biblioteca y crea un gráfico básico:</p>
+<pre>
+<code>
+import plotly.express as px
 
-    <h3>1. Abre Google Colab</h3>
-    <ol>
-        <li>Ve a <a href="https://colab.research.google.com/" target="_blank">Google Colab</a>.</li>
-        <li>Crea un nuevo cuaderno haciendo clic en <strong>"Nuevo cuaderno"</strong>.</li>
-    </ol>
+# Datos de ejemplo
+data = {
+    "Nombres": ["A", "B", "C", "D"],
+    "Valores": [10, 15, 7, 12]
+}
 
-    <h3>2. Instala Plotly</h3>
-    <p>En la primera celda de tu cuaderno, ejecuta el siguiente comando para instalar Plotly:</p>
-    <pre><code>!pip install plotly</code></pre>
+# Crear un DataFrame
+import pandas as pd
+df = pd.DataFrame(data)
 
-    <h3>3. Importa Plotly</h3>
-    <p>Importa las bibliotecas necesarias con el siguiente código:</p>
-    <pre><code>import plotly.express as px
+# Crear un gráfico de barras
+fig = px.bar(df, x="Nombres", y="Valores", title="Gráfico de Barras Básico")
+fig.show()
+</code>
+</pre>
+
+<h2>Conceptos Básicos</h2>
+<p>Plotly ofrece dos módulos principales para gráficos:</p>
+
+<ul>
+  <li><strong>plotly.graph_objects (go):</strong> Permite un control más detallado sobre los gráficos.</li>
+  <li><strong>plotly.express (px):</strong> Simplifica la creación de gráficos comunes.</li>
+</ul>
+
+<h3>Gráficos Básicos con Plotly Express</h3>
+<pre>
+<code>
+# Gráfico de dispersión
+fig = px.scatter(df, x="Nombres", y="Valores", title="Gráfico de Dispersión")
+fig.show()
+
+# Gráfico de líneas
+fig = px.line(df, x="Nombres", y="Valores", title="Gráfico de Líneas")
+fig.show()
+</code>
+</pre>
+
+<h3>Gráficos Personalizados con Graph Objects</h3>
+<pre>
+<code>
 import plotly.graph_objects as go
-</code></pre>
 
-    <h3>4. Crea tu primer gráfico</h3>
-    <p>Prueba un gráfico básico de dispersión usando el dataset de iris integrado en Plotly:</p>
-    <pre><code># Datos de ejemplo
-data = px.data.iris()
-
-# Gráfico de dispersión interactivo
-fig = px.scatter(data, x="sepal_width", y="sepal_length", color="species",
-                 title="Gráfico de dispersión - Iris Dataset")
-fig.show()
-</code></pre>
-    <p>Al ejecutar este código, verás un gráfico interactivo donde puedes hacer zoom, desplazarte y explorar datos.</p>
-
-    <h3>5. Prueba gráficos avanzados</h3>
-    <p>Aquí tienes un ejemplo de gráfico de barras con personalización:</p>
-    <pre><code># Gráfico de barras
 fig = go.Figure(data=[
-    go.Bar(name='Producto A', x=['Enero', 'Febrero', 'Marzo'], y=[20, 14, 23]),
-    go.Bar(name='Producto B', x=['Enero', 'Febrero', 'Marzo'], y=[12, 18, 29])
+    go.Bar(name='Grupo 1', x=['A', 'B', 'C'], y=[10, 20, 15]),
+    go.Bar(name='Grupo 2', x=['A', 'B', 'C'], y=[12, 18, 8])
 ])
-
-# Personalización
-fig.update_layout(title="Ventas Mensuales", barmode='group')
+fig.update_layout(title="Gráfico de Barras Agrupadas", barmode='group')
 fig.show()
-</code></pre>
+</code>
+</pre>
 
-    <h3>6. Guarda o comparte tu gráfico</h3>
-    <p>Si deseas descargar tu gráfico como un archivo HTML:</p>
-    <pre><code>fig.write_html("grafico.html")</code></pre>
-    <p>Para descargarlo en tu dispositivo:</p>
-    <pre><code>from google.colab import files
-files.download("grafico.html")
-</code></pre>
+<h2>Funciones Avanzadas</h2>
+<ul>
+  <li><strong>Interactividad:</strong> Los gráficos de Plotly son interactivos por defecto. Puedes hacer zoom, desplazar y guardar gráficos como imágenes.</li>
+  <li><strong>Subplots:</strong> Permiten combinar varios gráficos en uno.</li>
+  <li><strong>Integración:</strong> Compatible con Dash, Jupyter Notebooks y otras herramientas de visualización.</li>
+</ul>
 
-    <hr>
+<h3>Ejemplo: Gráfico de Subplots</h3>
+<pre>
+<code>
+from plotly.subplots import make_subplots
 
-    <h2>Recursos adicionales</h2>
-    <ul>
-        <li><a href="https://plotly.com/python/" target="_blank">Documentación oficial de Plotly</a></li>
-        <li><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></li>
-    </ul>
+fig = make_subplots(rows=1, cols=2, subplot_titles=("Gráfico 1", "Gráfico 2"))
 
-    <hr>
-    <p>¡Comienza a explorar y crea gráficos interactivos increíbles con Plotly en Google Colab! 🎉</p>
-</body>
-</html>
+fig.add_trace(go.Bar(x=['A', 'B', 'C'], y=[10, 20, 15], name="Gráfico 1"), row=1, col=1)
+fig.add_trace(go.Line(x=['A', 'B', 'C'], y=[15, 10, 20], name="Gráfico 2"), row=1, col=2)
+
+fig.update_layout(title="Ejemplo de Subplots")
+fig.show()
+</code>
+</pre>
+
+<h2>Recursos Adicionales</h2>
+<ul>
+  <li><a href="https://plotly.com/python/">Documentación Oficial</a></li>
+  <li><a href="https://dash.plotly.com/">Dash: Framework para Apps Interactivas</a></li>
+  <li><a href="https://github.com/plotly/">Repositorio Oficial en GitHub</a></li>
+</ul>
+
+<h2>Contribuye o Mejora</h2>
+<p>Si encuentras útil esta guía, siéntete libre de sugerir mejoras o agregar ejemplos avanzados en este repositorio. ¡Gracias por aprender con nosotros!</p>
